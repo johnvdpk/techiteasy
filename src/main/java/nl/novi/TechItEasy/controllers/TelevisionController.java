@@ -1,10 +1,11 @@
 package nl.novi.TechItEasy.controllers;
 
+import nl.novi.TechItEasy.exceptions.TvsNotFound;
 import nl.novi.TechItEasy.model.Televisions;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,10 +30,30 @@ public class TelevisionController {
 
         @GetMapping(value = "/tvs")
 
-        public ResponseEntity<List<Televisions>>getTv() {
-            return new ResponseEntity<>(tvs, HttpStatus.OK);
+        public ResponseEntity<List<Televisions>>getAllTvs() {
+        throw new TvsNotFound("probleem");
+        //return new ResponseEntity<>(tvs, HttpStatus.OK);
 
         }
+
+    @GetMapping("/tvs/{id}")
+    public ResponseEntity<Televisions> getOneTv(@PathVariable int id) {
+
+        if (id >= 0 && id < tvs.size()) {
+            Televisions tv = tvs.get(id);
+            return new ResponseEntity<>(tv, HttpStatus.OK);
+        }
+        else {
+            throw new TvsNotFound("TV doesn't found" + id);        }
+    }
+
+    @PostMapping("/tvs")
+    public ResponseEntity<Televisions> createPerson(@RequestBody Televisions newTelevisions) {
+        tvs.add(newTelevisions);
+        return new ResponseEntity<>(newTelevisions, HttpStatus.CREATED);
+
+    }
+
 
     }
 
