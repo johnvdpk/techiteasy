@@ -3,7 +3,20 @@ package nl.novi.TechItEasy.model;
 public class Televisions {
 
 private String tv;
-private long id;
+private String beeldverhouding;
+
+
+public Televisions (String tv, String beeldverhouding) {
+    this.tv = tv;
+    this.beeldverhouding = beeldverhouding;
+}
+    public String getBeeldverhouding() {
+        return beeldverhouding;
+    }
+
+    public void setBeeldverhouding(String beeldverhouding) {
+        this.beeldverhouding = beeldverhouding;
+    }
 
     public String getTv() {
         return tv;
