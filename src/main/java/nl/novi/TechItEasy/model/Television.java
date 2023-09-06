@@ -1,12 +1,12 @@
 package nl.novi.TechItEasy.model;
 
-public class Televisions {
+public class Television {
 
 private String tv;
 private String beeldverhouding;
 
 
-public Televisions (String tv, String beeldverhouding) {
+public Television(String tv, String beeldverhouding) {
     this.tv = tv;
     this.beeldverhouding = beeldverhouding;
 }
