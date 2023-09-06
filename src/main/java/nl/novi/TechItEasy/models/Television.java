@@ -1,4 +1,4 @@
-package nl.novi.TechItEasy.model;
+package nl.novi.TechItEasy.models;
 
 public class Television {
 
