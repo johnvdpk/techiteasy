@@ -1,15 +1,6 @@
 package nl.novi.TechItEasy.dto;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Positive;
-import jakarta.validation.constraints.Size;
-
-
-public class TelevisionDto {
+public class InputDtoToTelevision {
 
 
     private String type;
@@ -29,14 +20,14 @@ public class TelevisionDto {
     private Integer originalStock;
     private Integer sold;
 
-    public TelevisionDto(String type, String brand, String name, Double price) {
+    public InputDtoToTelevision(String type, String brand, String name, Double price) {
         this.type = type;
         this.brand = brand;
         this.name = name;
         this.price = price;
     }
 
-    public TelevisionDto() {
+    public InputDtoToTelevision() {
 
     }
 

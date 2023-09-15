@@ -3,6 +3,7 @@ package nl.novi.TechItEasy.models;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name="televisions")
 public class Television {
 
     //  Een entiteit moet een primary key bevatten(id)

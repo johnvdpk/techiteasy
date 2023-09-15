@@ -1,11 +1,12 @@
 package nl.novi.TechItEasy.controllers;
 
+import jakarta.validation.Valid;
+import nl.novi.TechItEasy.dto.InputDtoToTelevision;
 import nl.novi.TechItEasy.dto.TelevisionDto;
+import nl.novi.TechItEasy.models.Television;
 import nl.novi.TechItEasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -14,13 +15,13 @@ public class TelevisionController {
 
     private final TelevisionService service;
 
-    public TelevisionController(TelevisionService service){
+    public TelevisionController(TelevisionService service) {
 
         this.service = service;
     }
 
     @GetMapping("/televisions")
-   public ResponseEntity<List<TelevisionDto>>getAllTelevisions(){
+    public ResponseEntity<List<TelevisionDto>> getAllTelevisions() {
         List<TelevisionDto> televisions = service.getTelevisions();
 
         return ResponseEntity.ok().body(televisions);
@@ -33,10 +34,13 @@ public class TelevisionController {
 
     }
 
-  //  @PostMapping("/televisions")
-    //public ResponseEntity<TelevisionDto>addTelevision(@Valid TelevisionDto televisionDto) {
-      //  TelevisionDto createdTelevision = service.addTelevision();
-    //}
+    @PostMapping("/televisions")
+    public ResponseEntity<Television> addTelevision(@Valid @RequestBody InputDtoToTelevision inputDtoToTelevision) {
+
+        Television InputDto = service.addTelevision(inputDtoToTelevision);
+
+        return ResponseEntity.created(null).body(InputDto);
+    }
 
 
 
