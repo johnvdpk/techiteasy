@@ -13,19 +13,18 @@ import java.util.Optional;
 @Service
 public class TelevisionService {
 
-
     private final TelevisionRepository repos;
-
 
     public TelevisionService(TelevisionRepository repos) {
 
         this.repos = repos;
     }
 
+    // Television wordt ingeladen in TelvisionDto
     public TelevisionDto televisionToDto(Television t) {
 
-
         TelevisionDto televisionDto = new TelevisionDto();
+
         televisionDto.setType(t.getType());
         televisionDto.setBrand(t.getBrand());
         televisionDto.setName(t.getName());
@@ -47,6 +46,7 @@ public class TelevisionService {
     }
 
 
+    // De InputDtoToTelevision wordt omgezet naar Television
     public Television dtoToTelevision(InputDtoToTelevision tDto) {
 
         Television television = new Television();
@@ -73,6 +73,8 @@ public class TelevisionService {
 
     }
 
+    // Er wordt een lijst gemaakt van alle TV's en opgevraagd via findAll().
+    // In de for loop wordt de functie televisionsDto gebruikt om elke tv in een TelevisionDto lijst te zetten
     public List<TelevisionDto> getTelevisions() {
         List<Television> televisions = repos.findAll();
         List<TelevisionDto> televisionDtos = new ArrayList<>();
@@ -85,13 +87,17 @@ public class TelevisionService {
 
     }
 
+
+// Optional geeft de mogelijkheid dat er ook null uit de zoek opdracht mag komen.
     public TelevisionDto getTelevision(Long id) {
         Optional<Television> television = repos.findById(id);
         return televisionToDto(television.get());
     }
 
 
+    // een televisie wordt toegevoegd aan de database. repository praat met de database. vandaaruit de functie repos.save
     public Television addTelevision(InputDtoToTelevision tDto) {
+
 
         Television t = dtoToTelevision(tDto);
         repos.save(t);
