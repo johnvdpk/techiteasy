@@ -4,6 +4,7 @@ import nl.novi.TechItEasy.dto.TelevisionDto;
 import nl.novi.TechItEasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -23,6 +24,13 @@ public class TelevisionController {
         List<TelevisionDto> televisions = service.getTelevisions();
 
         return ResponseEntity.ok().body(televisions);
+    }
+
+    @GetMapping("/televisions/{id}")
+    public ResponseEntity<TelevisionDto> getTelevisions(@PathVariable("id") Long id) {
+        TelevisionDto television = service.getTelevision(id);
+        return ResponseEntity.ok().body(television);
+
     }
 
   //  @PostMapping("/televisions")
