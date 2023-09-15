@@ -1,16 +1,12 @@
 package nl.novi.TechItEasy.controllers;
 
-import jakarta.validation.Valid;
 import nl.novi.TechItEasy.dto.TelevisionDto;
-import nl.novi.TechItEasy.exceptions.RecordNotFound;
-import nl.novi.TechItEasy.models.Television;
-import nl.novi.TechItEasy.repositories.TelevisionRepository;
 import nl.novi.TechItEasy.services.TelevisionService;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class TelevisionController {
@@ -29,10 +25,10 @@ public class TelevisionController {
         return ResponseEntity.ok().body(televisions);
     }
 
-    @PostMapping("/televisions")
-    public ResponseEntity<TelevisionDto>addTelevision(@Valid TelevisionDto televisionDto) {
-        TelevisionDto createdTelevision = service.addTelevision();
-    }
+  //  @PostMapping("/televisions")
+    //public ResponseEntity<TelevisionDto>addTelevision(@Valid TelevisionDto televisionDto) {
+      //  TelevisionDto createdTelevision = service.addTelevision();
+    //}
 
 
 
